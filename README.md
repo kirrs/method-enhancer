@@ -16,7 +16,7 @@ import { Enhance, enhancer } from 'method-enhancer'
 const speakerEnhancer = enhancer<Speaker>({
   say(arg) {
     console.log('Before')
-    this._say(arg)
+    this.$say(arg)
     console.log('After')
   }
 })
@@ -45,7 +45,7 @@ import { Enhance, Enhancement } from 'method-enhancer'
 const speakerEnhancer: Enhancement<Speaker> = {
   say(arg) {
     console.log('Before')
-    this._say(arg)
+    this.$say(arg)
     console.log('After')
   }
 }
@@ -68,4 +68,4 @@ Only support Typescript 5.0 and above
 
 ## How Does This Work?
 
-`@Enhance` decorator make `this._originalName` point to the target method, and pass `this` to the enhancer.
+`@Enhance` decorator make `this.$originalName` point to the target method, and pass `this` to the enhancer.

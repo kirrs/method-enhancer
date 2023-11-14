@@ -1,6 +1,6 @@
 {
   "name": "method-enhancer",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Enhance the class method in a simple way.",
   "main": "dist/index.js",
   "scripts": {

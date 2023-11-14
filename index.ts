@@ -9,7 +9,7 @@ export type Class<T, Arguments extends unknown[] = any[]> = {
 }
 
 type SafeThis<C, K extends keyof C> = {
-  [i in keyof C as i extends K ? `_${string & i}` : i]: C[i]
+  [i in keyof C as i extends K ? `$${string & i}` : i]: C[i]
 }
 
 // @ts-ignore
@@ -33,7 +33,7 @@ export function Enhance<This, Args extends any[], Return>(enhancer: (this: This,
   ) {
     return function enhancedTarget(this: This, ...args: Args): Return {
       // @ts-ignore
-      this[`_${String(context.name)}`] = target.bind(this)
+      this[`$${String(context.name)}`] = target.bind(this)
       return enhancer.call(this, ...args)
     }
   }

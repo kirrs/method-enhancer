@@ -3,7 +3,7 @@ import { Enhance, Enhancement, enhancer } from '.'
 test('check object', () => {
   const B: Enhancement<A> = {
     words(arg) {
-      return 'Hello ' + this._words(arg) + '.'
+      return 'Hello ' + this.$words(arg) + '.'
     }
   }
 
@@ -24,7 +24,7 @@ test('check object', () => {
 test('check fucntion', () => {
   const B = enhancer<A>({
     words(arg) {
-      return 'Hello ' + this._words(arg) + '.'
+      return 'Hello ' + this.$words(arg) + '.'
     }
   })
 
