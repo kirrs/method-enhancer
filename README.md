@@ -11,6 +11,37 @@ npm install method-enhancer
 ## Usage
 
 ```ts
+import { Enhance } from 'method-enhancer'
+
+class SpeakerEnhancer implements Enhancement<Speaker> {
+  say(this: SafeThis<Speaker, 'say'>, arg: string) {
+    console.log('Before')
+    this.$say(arg)
+    console.log('After')
+  }
+}
+
+const speakerEnhancer = new SpeakerEnhancer()
+
+class Speaker {
+  @Enhance(speakerEnhancer.say)
+  say(arg: string) {
+    console.log(arg)
+  }
+}
+
+const speaker = new Speaker()
+
+speaker.say('Hello world')
+// output:
+// Before
+// Hello world
+// After
+```
+
+Or use function:
+
+```ts
 import { Enhance, enhancer } from 'method-enhancer'
 
 const speakerEnhancer = enhancer<Speaker>({
@@ -40,7 +71,7 @@ speaker.say('Hello world')
 If you set `strictNullChecks: false`, you can write like this:
 
 ```ts
-import { Enhance, Enhancement } from 'method-enhancer'
+import { Enhance } from 'method-enhancer'
 
 const speakerEnhancer: Enhancement<Speaker> = {
   say(arg) {

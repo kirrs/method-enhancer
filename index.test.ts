@@ -1,4 +1,4 @@
-import { Enhance, Enhancement, enhancer } from '.'
+import { Enhance, enhancer } from '.'
 
 test('check object', () => {
   const B: Enhancement<A> = {
@@ -30,6 +30,27 @@ test('check fucntion', () => {
 
   class A {
     @Enhance(B.words)
+    words(arg: string) {
+      return arg
+    }
+  }
+
+  const a = new A()
+
+  expect(a.words('world')).toEqual('Hello world.')
+})
+
+test('check class', () => {
+  class B implements Enhancement<A> {
+    words(this: SafeThis<A, 'words'>, arg: string): string {
+      return 'Hello ' + this.$words(arg) + '.'
+    }
+  }
+
+  const b = new B()
+
+  class A {
+    @Enhance(b.words)
     words(arg: string) {
       return arg
     }

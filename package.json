@@ -4,11 +4,11 @@
   "description": "Enhance the class method in a simple way.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -d index.ts global.d.ts",
     "lint": "eslint",
     "format": "prettier -w index.ts",
     "test": "jest",
-    "prepublishOnly": "rm -rf dist && npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,17 @@
   "author": "kirrs",
   "license": "MIT",
   "files": [
-    "dist/**/*"
+    "index.js",
+    "index.d.ts",
+    "global.d.ts"
   ],
-  "keywords": ["class", "decorator", "method", "enhance", "method-enhancer"],
+  "keywords": [
+    "class",
+    "decorator",
+    "method",
+    "enhance",
+    "method-enhancer"
+  ],
   "devDependencies": {
     "@types/jest": "^29.5.8",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
