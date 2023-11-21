@@ -1,4 +1,4 @@
-import { Enhance, enhancer } from '.'
+import { Enhance, Enhancement, SafeThis, enhancer } from '.'
 
 test('check object', () => {
   const B: Enhancement<A> = {

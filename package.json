@@ -1,10 +1,10 @@
 {
   "name": "method-enhancer",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Enhance the class method in a simple way.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -d index.ts global.d.ts",
+    "build": "tsc index.ts --outDir dist",
     "lint": "eslint",
     "format": "prettier -w index.ts",
     "test": "jest",
